@@ -45,3 +45,5 @@ To compile and run any exercise, navigate to the `SOLID/` folder and use the fol
 ```bash
 javac exXX/src/*.java && java -cp exXX/src DemoXX
 ```
+
+Created By - [WhySeriousKaif](https://github.com/WhySeriousKaif/SST28-LLD101)
