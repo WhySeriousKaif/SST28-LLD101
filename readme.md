@@ -36,6 +36,11 @@ Each exercise is located in its own directory (`ex01` through `ex06`) with the f
 **Focus**: A combined application of SOLID principles in a notification system.
 - **Goal**: Review and refactor for general design excellence following all five principles.
 
+### [singleton-metrics: Singleton Design Pattern](file:///Users/mdkaif/Desktop/SST28-LLD101/singleton-metrics/)
+**Focus**: Implementing a robust, thread-safe, and secure Singleton.
+- **Goal**: Refactor `MetricsRegistry` to use Double-Checked Locking, protect against Reflection, and ensure Serialization safety.
+- **Verification**: Includes scripts for Concurrency, Reflection, and Serialization checks.
+
 ---
 
 ## How to Run
