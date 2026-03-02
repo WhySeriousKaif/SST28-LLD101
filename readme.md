@@ -41,6 +41,11 @@ Each exercise is located in its own directory (`ex01` through `ex06`) with the f
 - **Goal**: Refactor `MetricsRegistry` to use Double-Checked Locking, protect against Reflection, and ensure Serialization safety.
 - **Verification**: Includes scripts for Concurrency, Reflection, and Serialization checks.
 
+### [immutable-tickets: Immutable Classes](file:///Users/mdkaif/Desktop/SST28-LLD101/immutable-tickets/)
+**Focus**: Creating robust immutable data structures with the Builder pattern.
+- **Goal**: Refactor `IncidentTicket` to be a `final` class with `private final` fields and defensive collection copying.
+- **Verification**: Centralized validation in the builder and protection against collection leakage.
+
 ---
 
 ## How to Run
