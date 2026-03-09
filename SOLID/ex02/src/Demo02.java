@@ -16,6 +16,6 @@ public class Demo02 {
                 new OrderLine("M1", 2),
                 new OrderLine("M2", 1));
 
-        sys.checkout("STUDENT", order);
+        sys.checkout(new StudentDiscount(), new StudentTax(), order);
     }
 }

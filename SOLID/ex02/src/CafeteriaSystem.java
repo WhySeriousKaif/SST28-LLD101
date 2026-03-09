@@ -17,13 +17,13 @@ public class CafeteriaSystem {
         menu.put(i.id, i);
     }
 
-    public void checkout(String customerType, List<OrderLine> lines) {
+    public void checkout(DiscountStrategy discountStrategy, TaxStrategy taxStrategy, List<OrderLine> lines) {
         String invId = "INV-" + (++invoiceSeq);
 
         double subtotal = priceCalculator.calculateSubtotal(lines, menu);
-        double taxPct = TaxRules.taxPercent(customerType);
+        double taxPct = taxStrategy.getTaxRate();
         double tax = priceCalculator.calculateTax(subtotal, taxPct);
-        double discount = DiscountRules.discountAmount(customerType, subtotal, lines.size());
+        double discount = discountStrategy.getDiscount(subtotal, lines.size());
         double total = subtotal + tax - discount;
 
         String printable = printer.format(invId, lines, menu, subtotal, taxPct, tax, discount, total);
