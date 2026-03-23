@@ -1,3 +1,5 @@
+package snake_and_ladder_assignment;
+
 public abstract class MakeMoveStrategy {
     public abstract int makeMove(Player player, Dice dice, Board board);
 }

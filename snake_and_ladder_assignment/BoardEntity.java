@@ -1,3 +1,5 @@
+package snake_and_ladder_assignment;
+
 public interface BoardEntity {
     int getStart();
     int getEnd();

@@ -1,3 +1,5 @@
+package snake_and_ladder_assignment;
+
 import java.util.List;
 
 public class BoardFactory {

@@ -1,3 +1,5 @@
+package snake_and_ladder_assignment;
+
 import java.util.Scanner;
 
 public class Main {
@@ -17,5 +19,6 @@ public class Main {
         
         Game game = GameFactory.createGame(n, x, difficulty);
         game.play();
+        scanner.close();
     }
 }
