@@ -7,7 +7,7 @@ This repository contains the Object-Oriented Design implementation of a Snake & 
 2. **Strategy Pattern:** `MakeMoveStrategy` allows decoupling movement rules (like multiple 6s resetting) into `EasyMoveStrategy` or `HardMoveStrategy`.
 3. **Factory Pattern:** `GameFactory` and `BoardFactory` abstract away the complex object wiring steps. Random entities are placed ensuring no cycles are created using the `EntityGenerationStrategy`.
 
-## Mermaid Class Diagram
+## 📊 Visual UML Diagram (Snake & Ladder)
 
 ```mermaid
 classDiagram
@@ -40,19 +40,20 @@ classDiagram
     }
     class EntityGenerationStrategy {
         <<interface>>
-        +generateSnakes(int size, int count) List
-        +generateLadders(int size, int count, List existing) List
+        +generateEntities(int size, int count) List
     }
     class RandomEntityGenerationStrategy {
-        +generateSnakes(int size, int count) List
-        +generateLadders(int size, int count, List existing) List
+        +generateEntities(int size, int count) List
+    }
+    class RuleBasedEntityGenerationStrategy {
+        +generateEntities(int size, int count) List
     }
     class BoardFactory {
         -EntityGenerationStrategy strategy
-        +createBoard(int size) Board
+        +createBoard(int size, int snakes, int ladders) Board
     }
     class GameFactory {
-        +createGame(int n, int x, String diff) Game
+        +createGame(int size, int players, String diff, EntityGenerationStrategy strat) Game
     }
     
     Game *-- Board
@@ -62,8 +63,17 @@ classDiagram
     Board "1" *-- "many" BoardEntity
     BoardEntity <|.. Snake
     BoardEntity <|.. Ladder
-    MakeMoveStrategy <|-- EasyMoveStrategy
-    MakeMoveStrategy <|-- HardMoveStrategy
+    MakeMoveStrategy <|-- EasyMakeMoveStrategy
+    MakeMoveStrategy <|-- HardMakeMoveStrategy
     EntityGenerationStrategy <|.. RandomEntityGenerationStrategy
+    EntityGenerationStrategy <|.. RuleBasedEntityGenerationStrategy
     BoardFactory o-- EntityGenerationStrategy
+    GameFactory ..> BoardFactory
+    GameFactory ..> Game
+    GameFactory ..> MakeMoveStrategy
+
+
+
+
+
 ```
