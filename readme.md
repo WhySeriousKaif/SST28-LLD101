@@ -57,3 +57,64 @@ javac exXX/src/*.java && java -cp exXX/src DemoXX
 ```
 
 Created By - [WhySeriousKaif](https://github.com/WhySeriousKaif/SST28-LLD101)
+
+---
+
+## 🛠️ Git & GitHub Learnings: Resolving Diverged Branches
+
+### What Happened Today?
+Our GitHub repository (`origin/main`) and the local repository (`main`) diverged. The same assignment files were added directly to GitHub (perhaps via drag-and-drop or another machine) under the folder `pen_assignment`, while simultaneously being developed locally under `DesignPen/pen_assignment`. 
+
+When attempting to sync them, Git encountered an **add/add merge conflict**. It didn't know which version of the files to prioritize since they were introduced independently on both sides.
+
+### How We Handled It (Step-by-Step Resolution):
+1. **Align Local Structure**: First, we moved the local folders to match the GitHub structure to prevent having duplicate folders.
+   ```bash
+   mv DesignPen/pen_assignment ./pen_assignment
+   rmdir DesignPen
+   ```
+2. **Initiate the Merge**: We pulled the remote branch to initiate a merge, which triggered the conflict warning.
+   ```bash
+   git merge origin/main
+   ```
+3. **Resolve Conflicts Favoring Local Code**: Because the local IDE had the most complete and accurate version of the assignments, we told Git to overwrite the conflict using "our" local files.
+   ```bash
+   git checkout --ours .  # Overwrites conflicted files with the local state
+   git add .              # Stages the newly resolved files
+   git commit --no-edit   # Finalizes the merge commit automatically
+   ```
+4. **The Authentication Error**: When running `git push origin main`, we hit `fatal: Authentication failed`. GitHub no longer allows password authentication in the terminal. 
+   - **Fix**: You must either use a Personal Access Token (PAT) when it prompts for a password, log in using the GitHub CLI (`gh auth login`), or simply rely on your IDE (like VS Code or IntelliJ) which manages the authorization tokens automatically for you.
+
+---
+
+## 🔥 Essential Git Commands for Real-Life Development
+
+In the real world/industry, you'll be working on teams. Here are the commands you'll use constantly:
+
+### 1. State & History Checks
+- `git status`
+  *Real-life use*: Run this obsessively before committing to guarantee you aren't accidentally committing a `.env` file or some temporary code.
+- `git log --oneline`
+  *Real-life use*: Allows you to quickly find the exact commit ID where a bug was introduced.
+
+### 2. Branching (Team Workflows)
+You will **never** commit directly to `main` on a real job.
+- `git checkout -b feature/user-login`
+  *Real-life use*: Creates and switches to a new branch for your specific Jira ticket or task.
+- `git branch -D temp-branch`
+  *Real-life use*: Deletes a branch forcefully after it has been merged and is just cluttering your UI.
+
+### 3. Syncing & Merging 
+- `git pull origin main --rebase`
+  *Real-life use*: Fetches the latest code your coworkers wrote and places your unpushed commits *on top* of theirs. This prevents messy merge commits and keeps history strictly linear.
+- `git fetch origin`
+  *Real-life use*: Updates your machine's knowledge of the remote repository without actually changing any of your local files. 
+
+### 4. Handling Mistakes & Chaos
+- `git stash` and `git stash pop`
+  *Real-life use*: You are halfway done building a feature, but your PM asks you to fix a critical bug on `main` immediately. You run `git stash` to hide your unfinished work, checkout `main`, fix the bug, then come back to your branch and run `git stash pop` to resume your unfinished work.
+- `git merge --abort` or `git rebase --abort`
+  *Real-life use*: You try to pull the latest code and get a massive list of merge conflicts that you don't understand. Run this command to completely hit the "undo" button and go back to safety before the merge started.
+- `git revert <commit-hash>`
+  *Real-life use*: You pushed a commit that broke the production server. Instead of deleting history (which deletes it for your coworkers too), you `revert`, which creates a *new* commit that applies the exact opposite changes to safely roll back the bug.
