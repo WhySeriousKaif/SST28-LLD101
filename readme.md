@@ -48,6 +48,38 @@ Each exercise is located in its own directory (`ex01` through `ex06`) with the f
 
 ---
 
+## 🚀 Newly Added LLD Patterns
+
+### [observer-stock: Observer Pattern](file:///Users/mdkaif/Desktop/SST28-LLD101/observer-stock/)
+**Focus**: One-to-many communication dependency.
+- **Scenario**: A real-time stock price alert system notifying multiple devices (Mobile, iPad).
+
+### [decorator-coffee: Decorator Pattern](file:///Users/mdkaif/Desktop/SST28-LLD101/decorator-coffee/)
+**Focus**: Adding responsibilities dynamically without subclassing.
+- **Scenario**: A coffee shop ordering system where add-ons (Milk, Soy) are wrapped around beverages.
+
+### [state-vending: State Pattern](file:///Users/mdkaif/Desktop/SST28-LLD101/state-vending/)
+**Focus**: Object behavior changes based on internal state.
+- **Scenario**: A vending machine moving through Idle, Inserted Money, and Dispensing states.
+
+### [strategy-pricing: Strategy Pattern](file:///Users/mdkaif/Desktop/SST28-LLD101/strategy-pricing/)
+**Focus**: Interchangeable algorithms.
+- **Scenario**: A fee calculator that switches between Hourly, Flat, and Weekend pricing.
+
+### [factory-notification: Factory Pattern](file:///Users/mdkaif/Desktop/SST28-LLD101/factory-notification/)
+**Focus**: Decoupling object creation.
+- **Scenario**: A notification factory creating Email, SMS, and Push notifications.
+
+### [composite-filesystem: Composite Pattern](file:///Users/mdkaif/Desktop/SST28-LLD101/composite-filesystem/)
+**Focus**: Uniform treatment of objects and compositions.
+- **Scenario**: A file system hierarchy with folders and files.
+
+### [command-editor: Command Pattern](file:///Users/mdkaif/Desktop/SST28-LLD101/command-editor/)
+**Focus**: Encapsulating requests as objects.
+- **Scenario**: A text editor with undo functionality via command history.
+
+---
+
 ## How to Run
 
 To compile and run any exercise, navigate to the `SOLID/` folder and use the following command (replacing `XX` with the exercise number):
